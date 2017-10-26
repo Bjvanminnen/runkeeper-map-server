@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "express": "^4.16.1",
+    "form-data": "^2.3.1",
     "micro": "latest",
+    "node-fetch": "^1.7.3",
     "request": "^2.83.0"
   },
   "keywords": [],

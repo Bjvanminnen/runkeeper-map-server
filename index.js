@@ -1,6 +1,19 @@
 const express = require('express');
 const app = express();
 const request = require('request');
+const getRatioData = require('./getRatioData');
+
+app.get('/ratio.json', (req, res) => {
+  getRatioData().then(data => {
+    // Eventually I'd like to have this serve React, but initially we'll just have data
+    const now = new Date();
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(data));
+  })
+  .catch(err => {
+    res.status(500).send(err);
+  });
+});
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
