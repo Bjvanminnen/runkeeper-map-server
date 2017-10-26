@@ -13,7 +13,6 @@ module.exports = function() {
 
   const [month, date, year] = end.toLocaleString('en-US', {timeZone: "America/Los_Angeles"}).split(',')[0].split('/');
 
-  console.log(`${date}-${month}-${year}`);
   const data = {
     startDate: '1-Jan-2017',
     endDate: `${date}-${monthStringFromMonthNum(month)}-${year}`,
@@ -21,7 +20,6 @@ module.exports = function() {
     chartTimeBuckets: 'MONTH',
     reportConfigJson: '{"totalBoxes":{"TOTAL_DISTANCE":{"field":"TOTAL_DISTANCE"}},"charts":{"chart1":{"field":"TOTAL_DISTANCE","stack":"true"}}}'
   };
-  console.log(data);
 
   let formData = new FormData();
   for (var key in data ) {

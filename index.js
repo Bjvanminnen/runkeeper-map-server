@@ -17,7 +17,10 @@ app.get('/ratio.json', (req, res) => {
 });
 
 app.get('/ratio.html', (req, res) => {
-  res.send(getRatioHtml());
+  getRatioHtml().then(html => res.send(html))
+  .catch(err => {
+    res.status(500).send(err);
+  });
 });
 
 app.use(function(req, res, next) {
