@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const request = require('request');
 const getRatioData = require('./getRatioData');
+const getRatioHtml = require('./getRatioHtml');
 
 app.get('/ratio.json', (req, res) => {
   getRatioData().then(data => {
@@ -13,6 +14,10 @@ app.get('/ratio.json', (req, res) => {
   .catch(err => {
     res.status(500).send(err);
   });
+});
+
+app.get('/ratio.html', (req, res) => {
+  res.send(getRatioHtml());
 });
 
 app.use(function(req, res, next) {

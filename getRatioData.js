@@ -4,7 +4,7 @@ const FormData = require('form-data');
 const monthStringFromMonthNum = num => (new Date(0, num, 0)).toString().split(' ')[1];
 
 module.exports = function() {
-  const start = new Date(2017, 00, 01);
+  const start = new Date(2017, 0, 1);
   const end = new Date();
 
   const day = 24*60*60*1000; // hours*minutes*seconds*milliseconds
