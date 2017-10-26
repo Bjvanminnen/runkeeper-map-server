@@ -1,21 +1,21 @@
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 
-const monthStringFromMonthNum = num => (new Date(0, num, 0)).toString().split(' ')[1];
-
 module.exports = function() {
-  const start = new Date(2017, 0, 1);
-  const end = new Date();
+  const hour = 60 * 60 * 1000
+  const day = 24 * hour;
+  const timeZoneOffset = (7 - (new Date().getTimezoneOffset()) / 60) * hour;
 
-  const day = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+  const start = new Date(2017, 0, 1);
+  const end = new Date(new Date() - timeZoneOffset);
 
   const diffDays = Math.floor(Math.abs((start.getTime() - end.getTime())/(day)));
 
-  const [month, date, year] = end.toLocaleString('en-US', {timeZone: "America/Los_Angeles"}).split(',')[0].split('/');
+  const [_, month, date, year] = end.toString().split(' ');
 
   const data = {
     startDate: '1-Jan-2017',
-    endDate: `${date}-${monthStringFromMonthNum(month)}-${year}`,
+    endDate: `${date}-${month}-${year}`,
     timeframeOption: 'CURRENT_YEAR',
     chartTimeBuckets: 'MONTH',
     reportConfigJson: '{"totalBoxes":{"TOTAL_DISTANCE":{"field":"TOTAL_DISTANCE"}},"charts":{"chart1":{"field":"TOTAL_DISTANCE","stack":"true"}}}'
