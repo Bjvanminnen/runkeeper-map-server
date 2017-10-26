@@ -4,10 +4,9 @@ const request = require('request');
 const getRatioData = require('./getRatioData');
 const getRatioHtml = require('./getRatioHtml');
 
+// Could do without this route now if desired
 app.get('/ratio.json', (req, res) => {
   getRatioData().then(data => {
-    // Eventually I'd like to have this serve React, but initially we'll just have data
-    const now = new Date();
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(data));
   })

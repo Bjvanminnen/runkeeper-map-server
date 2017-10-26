@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js"
+    "start-dev": "babel-node src/index.js",
+    "start": "babel src -d dist && node dist/index.js"
   },
   "dependencies": {
     "express": "^4.16.1",
