@@ -4,6 +4,14 @@ const request = require('request');
 const getRatioData = require('./getRatioData');
 const getRatioHtml = require('./getRatioHtml');
 
+app.use('/static', express.static('client-dist'));
+app.get('/index.html', (req, res) =>
+  res.sendFile('index.html', {root: __dirname + '/../client-dist'})
+);
+app.get('/', (req, res) =>
+res.sendFile('index.html', {root: __dirname + '/../client-dist'})
+);
+
 // Could do without this route now if desired
 app.get('/ratio.json', (req, res) => {
   getRatioData().then(data => {
