@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+const formattedNumber = num => num.toLocaleString('en-us', {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+});
+
 export default class Ratio extends Component {
   render() {
     const { days, miles } = this.props;
@@ -15,10 +20,13 @@ export default class Ratio extends Component {
           Target: {days * 1.5}
         </div>
         <div>
-          Delta: {miles - days * 1.5}
+          Delta: {formattedNumber(miles - days * 1.5)}
         </div>
         <div>
-          Current Ratio: {(miles / days).toLocaleString()}
+          Year Delta: {formattedNumber(365 * 1.5 - miles)}
+        </div>
+        <div>
+          Current Ratio: {formattedNumber(miles / days)}
         </div>
       </div>
     );
