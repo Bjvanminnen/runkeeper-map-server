@@ -5,3 +5,5 @@ proxy server for runkeeper-map (https://github.com/Bjvanminnen/runkeeper-map)
 
 To update client, do `npm run build` in `runkeeper-map`, then copy build folder to `./client-dist`. Finally, remove the .js.map file as this is too big and now will complain
 Finally run `now alias <new deployment name> runkeeper-map.now.sh`
+
+Note: When doing upgrade from now -> vercel, I changed index.html manually
