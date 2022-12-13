@@ -10,7 +10,7 @@
     "deploy": "now --public"
   },
   "dependencies": {
-    "express": "^4.16.1",
+    "express": "^4.17.3",
     "form-data": "^2.3.1",
     "micro": "latest",
     "node-fetch": "^1.7.3",
